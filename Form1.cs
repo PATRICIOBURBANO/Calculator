@@ -1,7 +1,20 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Text;
+using System.Windows.Forms;
+
 namespace Calculator
 {
     public partial class Form1 : Form
     {
+
+        double FirstNumber;
+        string Operand;
+        
+
         public Form1()
         {
             InitializeComponent();
@@ -129,14 +142,90 @@ namespace Calculator
        
 
 
+       
+
+        private void nPlus_Click(object sender, EventArgs e)
+        {
+            FirstNumber = Convert.ToDouble(textBox1.Text);
+            textBox1.Text = "0";
+            Operand = "+";
+        }
+
+        private void nMinus_Click(object sender, EventArgs e)
+        {
+            FirstNumber = Convert.ToDouble(textBox1.Text);
+            textBox1.Text = "-";
+            Operand = "-";
+        }
+
+        private void nFor_Click(object sender, EventArgs e)
+        {
+            FirstNumber = Convert.ToDouble(textBox1.Text);
+            textBox1.Text = "0";
+            Operand = "x";
+        }
+
+
+
+        private void nEqual_Click(object sender, EventArgs e)
+        {
+            double SecondNumber;
+            double Result;
+
+            SecondNumber = Convert.ToDouble(textBox1.Text);
+
+            if (Operand == "+")
+            {
+                Result = (FirstNumber + SecondNumber);
+                textBox1.Text = Convert.ToString(Result);
+                FirstNumber = Result;
+            }
+            if (Operand == "-")
+            {
+                Result = (FirstNumber - SecondNumber);
+                textBox1.Text = Convert.ToString(Result);
+                FirstNumber = Result;
+            }
+            if (Operand == "x")
+            {
+                Result = (FirstNumber * SecondNumber);
+                textBox1.Text = Convert.ToString(Result);
+                FirstNumber = Result;
+            }
+            if (Operand == "÷")
+            {
+                if (SecondNumber == 0)
+                {
+                    textBox1.Text = "Cannot divide by zero";
+
+                }
+                else
+                {
+                    Result = (FirstNumber / SecondNumber);
+                    textBox1.Text = Convert.ToString(Result);
+                    FirstNumber = Result;
+                }
+            }
+        }
+        private void nDot_Click(object sender, EventArgs e)
+        {
+            textBox1.Text = textBox1.Text + ".";
+
+        }
+        private void nDiv_Click(object sender, EventArgs e)
+        {
+            FirstNumber = Convert.ToDouble(textBox1.Text);
+            textBox1.Text = "0";
+            Operand = "/";
+
+        }
+
+
         private void Form1_Load(object sender, EventArgs e)
         {
 
         }
 
-        private void button4_Click(object sender, EventArgs e)
-        {
-            textBox1.Text = "0";
-        }
+      
     }
 }   
