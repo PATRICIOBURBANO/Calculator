@@ -13,6 +13,8 @@ namespace Calculator
 
         double FirstNumber;
         string Operand;
+        string[] DisplayBox;
+
         
 
         public Form1()
@@ -29,7 +31,7 @@ namespace Calculator
             }
             else
             {
-                textBox1.Text = textBox1.Text + "1";
+                textBox1.Text =  "1";
             }
 
         }
@@ -42,7 +44,7 @@ namespace Calculator
             }
             else
             {
-                textBox1.Text = textBox1.Text + "2";
+                textBox1.Text = "2";
             }
 
         }
@@ -54,7 +56,7 @@ namespace Calculator
             }
             else
             {
-                textBox1.Text = textBox1.Text + "3";
+                textBox1.Text = "3";
             }
 
         }
@@ -67,7 +69,7 @@ namespace Calculator
             }
             else
             {
-                textBox1.Text = textBox1.Text + "4";
+                textBox1.Text = "4";
             }
         }
 
@@ -79,7 +81,7 @@ namespace Calculator
             }
             else
             {
-                textBox1.Text = textBox1.Text + "5";
+                textBox1.Text = "5";
             }
         }
 
@@ -91,7 +93,7 @@ namespace Calculator
             }
             else
             {
-                textBox1.Text = textBox1.Text + "6";
+                textBox1.Text = "6";
             }
 
         }
@@ -104,7 +106,7 @@ namespace Calculator
             }
             else
             {
-                textBox1.Text = textBox1.Text + "7";
+                textBox1.Text = "7";
             }
 
         }
@@ -117,7 +119,7 @@ namespace Calculator
             }
             else
             {
-                textBox1.Text = textBox1.Text + "8";
+                textBox1.Text = "8";
             }
 
         }
@@ -130,24 +132,20 @@ namespace Calculator
             }
             else
             {
-                textBox1.Text = textBox1.Text + "9";
+                textBox1.Text = "9";
             }
         }
 
 
         private void n0_Click_1(object sender, EventArgs e)
         {
-            textBox1.Text = textBox1.Text + "0";
+            textBox1.Text = "0";
         }
        
-
-
-       
-
         private void nPlus_Click(object sender, EventArgs e)
         {
             FirstNumber = Convert.ToDouble(textBox1.Text);
-            textBox1.Text = "0";
+            textBox1.Text = "+";
             Operand = "+";
         }
 
@@ -161,10 +159,25 @@ namespace Calculator
         private void nFor_Click(object sender, EventArgs e)
         {
             FirstNumber = Convert.ToDouble(textBox1.Text);
-            textBox1.Text = "0";
-            Operand = "x";
+            textBox1.Text = "*";
+            Operand = "*";
         }
+        private void nDot_Click(object sender, EventArgs e)
+        {
+            textBox1.Text = textBox1.Text + ".";
 
+        }
+        private void nDiv_Click(object sender, EventArgs e)
+        {
+            FirstNumber = Convert.ToDouble(textBox1.Text);
+            textBox1.Text = "÷";
+            Operand = "/";
+
+        }
+        private void bc_Click(object sender, EventArgs e)
+        {
+            textBox1.Text = "0";
+        }
 
 
         private void nEqual_Click(object sender, EventArgs e)
@@ -186,17 +199,17 @@ namespace Calculator
                 textBox1.Text = Convert.ToString(Result);
                 FirstNumber = Result;
             }
-            if (Operand == "x")
+            if (Operand == "*")
             {
                 Result = (FirstNumber * SecondNumber);
                 textBox1.Text = Convert.ToString(Result);
                 FirstNumber = Result;
             }
-            if (Operand == "÷")
+            if (Operand == "/")
             {
                 if (SecondNumber == 0)
                 {
-                    textBox1.Text = "Cannot divide by zero";
+                    textBox1.Text = "Err Div/Zero";
 
                 }
                 else
@@ -207,23 +220,11 @@ namespace Calculator
                 }
             }
         }
-        private void nDot_Click(object sender, EventArgs e)
-        {
-            textBox1.Text = textBox1.Text + ".";
-
-        }
-        private void nDiv_Click(object sender, EventArgs e)
-        {
-            FirstNumber = Convert.ToDouble(textBox1.Text);
-            textBox1.Text = "0";
-            Operand = "/";
-
-        }
-
+        
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+           
         }
 
       

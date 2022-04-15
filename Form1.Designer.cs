@@ -265,6 +265,7 @@
             this.bc.TabIndex = 22;
             this.bc.Text = "C";
             this.bc.UseVisualStyleBackColor = false;
+            this.bc.Click += new System.EventHandler(this.bc_Click);
             // 
             // nDiv
             // 
