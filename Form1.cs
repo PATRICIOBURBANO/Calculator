@@ -10,15 +10,17 @@ namespace Calculator
 {
     public partial class Form1 : Form
     {
+        string? Operand;
+        double Outcome;
+        double LastNumber;
+        private double StoredNumber { get; set; }
 
-        double FirstNumber;
-        string Operand;
-        string[] DisplayBox;
+      
 
-        
 
         public Form1()
         {
+            StoredNumber = 0;
             InitializeComponent();
         }
        
@@ -31,7 +33,8 @@ namespace Calculator
             }
             else
             {
-                textBox1.Text =  "1";
+               // textBox2.Text += "1";
+                textBox1.Text += "1";
             }
 
         }
@@ -44,7 +47,7 @@ namespace Calculator
             }
             else
             {
-                textBox1.Text = "2";
+                textBox1.Text += "2";
             }
 
         }
@@ -56,7 +59,7 @@ namespace Calculator
             }
             else
             {
-                textBox1.Text = "3";
+                textBox1.Text += "3";
             }
 
         }
@@ -69,7 +72,7 @@ namespace Calculator
             }
             else
             {
-                textBox1.Text = "4";
+                textBox1.Text += "4";
             }
         }
 
@@ -81,7 +84,7 @@ namespace Calculator
             }
             else
             {
-                textBox1.Text = "5";
+                textBox1.Text += "5";
             }
         }
 
@@ -93,7 +96,7 @@ namespace Calculator
             }
             else
             {
-                textBox1.Text = "6";
+                textBox1.Text += "6";
             }
 
         }
@@ -106,7 +109,7 @@ namespace Calculator
             }
             else
             {
-                textBox1.Text = "7";
+                textBox1.Text += "7";
             }
 
         }
@@ -119,7 +122,7 @@ namespace Calculator
             }
             else
             {
-                textBox1.Text = "8";
+                textBox1.Text += "8";
             }
 
         }
@@ -132,101 +135,186 @@ namespace Calculator
             }
             else
             {
-                textBox1.Text = "9";
+                textBox1.Text += "9";
             }
         }
 
 
         private void n0_Click_1(object sender, EventArgs e)
         {
-            textBox1.Text = "0";
+            if (textBox1.Text == "0" && textBox1.Text != null)
+            {
+                textBox1.Text = "0";
+            }
+            else
+            {
+                textBox1.Text += "0";
+            }
         }
        
         private void nPlus_Click(object sender, EventArgs e)
-        {
-            FirstNumber = Convert.ToDouble(textBox1.Text);
-            textBox1.Text = "+";
+        {   
+            Outcome = StoredNumber + Convert.ToDouble(textBox1.Text);
+            textBox2.Text += textBox1.Text + "+";
             Operand = "+";
+            StoredNumber = Outcome;
+            textBox1.Text = "";
         }
 
         private void nMinus_Click(object sender, EventArgs e)
         {
-            FirstNumber = Convert.ToDouble(textBox1.Text);
-            textBox1.Text = "-";
+
+            Outcome = StoredNumber - Convert.ToDouble(textBox1.Text);
+            textBox2.Text += textBox1.Text + "-";
             Operand = "-";
+            StoredNumber = Outcome;
+            textBox1.Text = "";
+
         }
 
         private void nFor_Click(object sender, EventArgs e)
         {
-            FirstNumber = Convert.ToDouble(textBox1.Text);
-            textBox1.Text = "*";
+
+            Outcome = Convert.ToDouble(textBox1.Text);
+            textBox2.Text = textBox1.Text + "*";
             Operand = "*";
+            StoredNumber = Outcome;
+            textBox1.Text = "";
+
+        }
+        private void nDiv_Click(object sender, EventArgs e)
+        {
+            
+            Outcome = Convert.ToDouble(textBox1.Text);
+            textBox2.Text = textBox1.Text + "÷";
+            Operand = "/";
+            StoredNumber = Outcome;
+            textBox1.Text = "";
+
+
+
         }
         private void nDot_Click(object sender, EventArgs e)
         {
             textBox1.Text = textBox1.Text + ".";
 
         }
-        private void nDiv_Click(object sender, EventArgs e)
-        {
-            FirstNumber = Convert.ToDouble(textBox1.Text);
-            textBox1.Text = "÷";
-            Operand = "/";
-
-        }
+       
         private void bc_Click(object sender, EventArgs e)
         {
             textBox1.Text = "0";
+            textBox2.Text = "";
+            StoredNumber = 0;
+            Outcome = 0;
         }
 
 
         private void nEqual_Click(object sender, EventArgs e)
         {
-            double SecondNumber;
-            double Result;
-
-            SecondNumber = Convert.ToDouble(textBox1.Text);
+           
 
             if (Operand == "+")
             {
-                Result = (FirstNumber + SecondNumber);
-                textBox1.Text = Convert.ToString(Result);
-                FirstNumber = Result;
+                LastNumber = Convert.ToDouble(textBox1.Text);
+                StoredNumber = Outcome + Convert.ToDouble(textBox1.Text);
+                textBox1.Text = Convert.ToString(Math.Round(StoredNumber, 2).ToString("#.00"));
+               
+               
             }
             if (Operand == "-")
             {
-                Result = (FirstNumber - SecondNumber);
-                textBox1.Text = Convert.ToString(Result);
-                FirstNumber = Result;
+                LastNumber = Convert.ToDouble(textBox1.Text);
+                StoredNumber = Outcome - Convert.ToDouble(textBox1.Text);
+                textBox1.Text = Convert.ToString(Math.Round(StoredNumber, 2).ToString("#.00"));
+
             }
             if (Operand == "*")
             {
-                Result = (FirstNumber * SecondNumber);
-                textBox1.Text = Convert.ToString(Result);
-                FirstNumber = Result;
+                LastNumber = Convert.ToDouble(textBox1.Text);
+                StoredNumber = Outcome * Convert.ToDouble(LastNumber);
+                textBox1.Text = Convert.ToString(Math.Round(StoredNumber, 2).ToString("#.00"));
+
             }
             if (Operand == "/")
             {
-                if (SecondNumber == 0)
+                if (Convert.ToDouble(textBox1.Text) == 0)
                 {
                     textBox1.Text = "Err Div/Zero";
 
                 }
                 else
                 {
-                    Result = (FirstNumber / SecondNumber);
-                    textBox1.Text = Convert.ToString(Result);
-                    FirstNumber = Result;
+                    LastNumber = Convert.ToDouble(textBox1.Text);
+                    StoredNumber = Outcome / Convert.ToDouble(LastNumber);
+                    textBox1.Text = Convert.ToString(Math.Round(StoredNumber, 2).ToString("#.00"));
+
+                    ;
                 }
             }
+            textBox2.Text = textBox2.Text + LastNumber.ToString() +" = " + StoredNumber.ToString();
+            Outcome = 0;
+
+
         }
-        
+       
 
         private void Form1_Load(object sender, EventArgs e)
         {
            
         }
 
-      
+       
+
+        private void btnLoc_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnBinary_Click(object sender, EventArgs e)
+        {
+
+            try
+            {
+                int value = int.Parse(textBox1.Text);
+                if (value > Int32.MinValue && value < Int32.MaxValue)
+                {
+                    textBox1.Text = Convert.ToString(value, 2).ToString();
+                }
+            }
+            catch (Exception ex)
+            {
+
+                textBox1.Text = "ERROR";
+               
+            }
+
+        }
+
+        private void btnDecimall_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                textBox1.Text = Convert.ToInt32(textBox1.Text, 2).ToString();
+            }
+            catch (Exception ex)
+            {
+                textBox1.Text = "ERROR";
+            
+            }
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_KeyUp(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Enter)
+            {
+
+            }
+        }
     }
 }   

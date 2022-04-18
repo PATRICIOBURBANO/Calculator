@@ -43,26 +43,29 @@
             this.nMinus = new System.Windows.Forms.Button();
             this.nEqual = new System.Windows.Forms.Button();
             this.nFor = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
+            this.btnBinary = new System.Windows.Forms.Button();
+            this.btnLoc = new System.Windows.Forms.Button();
             this.bc = new System.Windows.Forms.Button();
             this.nDiv = new System.Windows.Forms.Button();
             this.nDot = new System.Windows.Forms.Button();
             this.textBox2 = new System.Windows.Forms.TextBox();
+            this.btnDecimall = new System.Windows.Forms.Button();
+            this.textOutcome = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // textBox1
             // 
             this.textBox1.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.textBox1.Font = new System.Drawing.Font("Courier New", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.textBox1.Font = new System.Drawing.Font("Courier New", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.textBox1.Location = new System.Drawing.Point(17, 89);
             this.textBox1.Name = "textBox1";
             this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(282, 62);
+            this.textBox1.Size = new System.Drawing.Size(282, 38);
             this.textBox1.TabIndex = 0;
             this.textBox1.Text = "0";
             this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.textBox1.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBox1_KeyUp);
             // 
             // n1
             // 
@@ -222,38 +225,29 @@
             this.nFor.UseVisualStyleBackColor = false;
             this.nFor.Click += new System.EventHandler(this.nFor_Click);
             // 
-            // button2
+            // btnBinary
             // 
-            this.button2.BackColor = System.Drawing.SystemColors.Highlight;
-            this.button2.Font = new System.Drawing.Font("Courier New", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button2.Location = new System.Drawing.Point(13, 170);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(67, 52);
-            this.button2.TabIndex = 16;
-            this.button2.Text = "BIN";
-            this.button2.UseVisualStyleBackColor = false;
+            this.btnBinary.BackColor = System.Drawing.SystemColors.Highlight;
+            this.btnBinary.Font = new System.Drawing.Font("Courier New", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnBinary.Location = new System.Drawing.Point(13, 170);
+            this.btnBinary.Name = "btnBinary";
+            this.btnBinary.Size = new System.Drawing.Size(67, 52);
+            this.btnBinary.TabIndex = 16;
+            this.btnBinary.Text = "BIN";
+            this.btnBinary.UseVisualStyleBackColor = false;
+            this.btnBinary.Click += new System.EventHandler(this.btnBinary_Click);
             // 
-            // button5
+            // btnLoc
             // 
-            this.button5.BackColor = System.Drawing.SystemColors.Highlight;
-            this.button5.Font = new System.Drawing.Font("Courier New", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button5.Location = new System.Drawing.Point(86, 170);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(67, 52);
-            this.button5.TabIndex = 19;
-            this.button5.Text = "DEC";
-            this.button5.UseVisualStyleBackColor = false;
-            // 
-            // button6
-            // 
-            this.button6.BackColor = System.Drawing.SystemColors.Highlight;
-            this.button6.Font = new System.Drawing.Font("Courier New", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button6.Location = new System.Drawing.Point(159, 170);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(67, 52);
-            this.button6.TabIndex = 20;
-            this.button6.Text = "LOC";
-            this.button6.UseVisualStyleBackColor = false;
+            this.btnLoc.BackColor = System.Drawing.SystemColors.Highlight;
+            this.btnLoc.Font = new System.Drawing.Font("Courier New", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnLoc.Location = new System.Drawing.Point(159, 170);
+            this.btnLoc.Name = "btnLoc";
+            this.btnLoc.Size = new System.Drawing.Size(67, 52);
+            this.btnLoc.TabIndex = 20;
+            this.btnLoc.Text = "LOC";
+            this.btnLoc.UseVisualStyleBackColor = false;
+            this.btnLoc.Click += new System.EventHandler(this.btnLoc_Click);
             // 
             // bc
             // 
@@ -294,28 +288,55 @@
             // 
             this.textBox2.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox2.Font = new System.Drawing.Font("Courier New", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.textBox2.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.textBox2.ForeColor = System.Drawing.Color.Gray;
             this.textBox2.Location = new System.Drawing.Point(17, 38);
             this.textBox2.Name = "textBox2";
             this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(282, 22);
+            this.textBox2.Size = new System.Drawing.Size(282, 19);
             this.textBox2.TabIndex = 25;
             this.textBox2.Text = " ";
             this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // btnDecimall
+            // 
+            this.btnDecimall.BackColor = System.Drawing.SystemColors.Highlight;
+            this.btnDecimall.Font = new System.Drawing.Font("Courier New", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnDecimall.Location = new System.Drawing.Point(86, 170);
+            this.btnDecimall.Name = "btnDecimall";
+            this.btnDecimall.Size = new System.Drawing.Size(67, 52);
+            this.btnDecimall.TabIndex = 26;
+            this.btnDecimall.Text = "DEC";
+            this.btnDecimall.UseVisualStyleBackColor = false;
+            this.btnDecimall.Click += new System.EventHandler(this.btnDecimall_Click);
+            // 
+            // textOutcome
+            // 
+            this.textOutcome.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.textOutcome.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textOutcome.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.textOutcome.ForeColor = System.Drawing.Color.Gray;
+            this.textOutcome.Location = new System.Drawing.Point(17, 145);
+            this.textOutcome.Name = "textOutcome";
+            this.textOutcome.ReadOnly = true;
+            this.textOutcome.Size = new System.Drawing.Size(282, 19);
+            this.textOutcome.TabIndex = 27;
+            this.textOutcome.Text = " ";
+            this.textOutcome.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(308, 564);
+            this.ClientSize = new System.Drawing.Size(308, 483);
+            this.Controls.Add(this.textOutcome);
+            this.Controls.Add(this.btnDecimall);
             this.Controls.Add(this.nDot);
             this.Controls.Add(this.nDiv);
             this.Controls.Add(this.bc);
-            this.Controls.Add(this.button6);
-            this.Controls.Add(this.button5);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.btnLoc);
+            this.Controls.Add(this.btnBinary);
             this.Controls.Add(this.nFor);
             this.Controls.Add(this.nEqual);
             this.Controls.Add(this.nMinus);
@@ -332,6 +353,8 @@
             this.Controls.Add(this.n1);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.textBox2);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "Form1";
             this.Text = "Calculator";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -357,12 +380,14 @@
         private Button nMinus;
         private Button nEqual;
         private Button nFor;
-        private Button button2;
-        private Button button5;
-        private Button button6;
+        private Button btnBinary;
+        //private Button btnDecimal;
+        private Button btnLoc;
         private Button bc;
         private Button nDiv;
         private Button nDot;
         private TextBox textBox2;
+        private Button btnDecimall;
+        private TextBox textOutcome;
     }
 }
