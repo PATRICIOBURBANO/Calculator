@@ -14,16 +14,18 @@ namespace Calculator
         double Outcome;
         double LastNumber;
         private double StoredNumber { get; set; }
-
       
+
+
 
 
         public Form1()
         {
             StoredNumber = 0;
+            
             InitializeComponent();
         }
-       
+
 
         private void n1_Click_1(object sender, EventArgs e)
         {
@@ -33,7 +35,7 @@ namespace Calculator
             }
             else
             {
-               // textBox2.Text += "1";
+                // textBox2.Text += "1";
                 textBox1.Text += "1";
             }
 
@@ -151,46 +153,76 @@ namespace Calculator
                 textBox1.Text += "0";
             }
         }
-       
+
         private void nPlus_Click(object sender, EventArgs e)
-        {   
-            Outcome = StoredNumber + Convert.ToDouble(textBox1.Text);
-            textBox2.Text += textBox1.Text + "+";
-            Operand = "+";
-            StoredNumber = Outcome;
-            textBox1.Text = "";
+        {
+
+            if (textBox1.Text == "")
+            {
+                textBox1.Text = StoredNumber.ToString();
+            }
+            else
+            {
+                Outcome = StoredNumber + Convert.ToDouble(textBox1.Text);
+                textBox2.Text += textBox1.Text + "+";
+                Operand = "+";
+                StoredNumber = Outcome;
+                textBox1.Text = "";
+            }
+
         }
 
         private void nMinus_Click(object sender, EventArgs e)
         {
+            if (textBox1.Text == "")
+            {
+                textBox1.Text = StoredNumber.ToString();
+            }
+            else
+            {
+                Outcome = StoredNumber - (Convert.ToDouble(textBox1.Text)*-1);
+                textBox2.Text += textBox1.Text + "-";
+                Operand = "-";
+                StoredNumber = Outcome;
+                textBox1.Text = "";
+            }
 
-            Outcome = StoredNumber - Convert.ToDouble(textBox1.Text);
-            textBox2.Text += textBox1.Text + "-";
-            Operand = "-";
-            StoredNumber = Outcome;
-            textBox1.Text = "";
+
 
         }
 
         private void nFor_Click(object sender, EventArgs e)
         {
+            if (textBox1.Text == "")
+            {
+                textBox1.Text = StoredNumber.ToString();
+            }
+            else
+            {
+                Outcome = Convert.ToDouble(textBox1.Text);
+                textBox2.Text = textBox1.Text + "*";
+                Operand = "*";
+                StoredNumber = Outcome;
+                textBox1.Text = "";
 
-            Outcome = Convert.ToDouble(textBox1.Text);
-            textBox2.Text = textBox1.Text + "*";
-            Operand = "*";
-            StoredNumber = Outcome;
-            textBox1.Text = "";
+            }
+
 
         }
         private void nDiv_Click(object sender, EventArgs e)
         {
-            
-            Outcome = Convert.ToDouble(textBox1.Text);
-            textBox2.Text = textBox1.Text + "÷";
-            Operand = "/";
-            StoredNumber = Outcome;
-            textBox1.Text = "";
-
+            if (textBox1.Text == "")
+            {
+                textBox1.Text = StoredNumber.ToString();
+            }
+            else
+            {
+                Outcome = Convert.ToDouble(textBox1.Text);
+                textBox2.Text = textBox1.Text + "÷";
+                Operand = "/";
+                StoredNumber = Outcome;
+                textBox1.Text = "";
+            }
 
 
         }
@@ -199,7 +231,7 @@ namespace Calculator
             textBox1.Text = textBox1.Text + ".";
 
         }
-       
+
         private void bc_Click(object sender, EventArgs e)
         {
             textBox1.Text = "0";
@@ -211,15 +243,15 @@ namespace Calculator
 
         private void nEqual_Click(object sender, EventArgs e)
         {
-           
+
 
             if (Operand == "+")
             {
                 LastNumber = Convert.ToDouble(textBox1.Text);
                 StoredNumber = Outcome + Convert.ToDouble(textBox1.Text);
                 textBox1.Text = Convert.ToString(Math.Round(StoredNumber, 2).ToString("#.00"));
-               
-               
+
+
             }
             if (Operand == "-")
             {
@@ -251,19 +283,19 @@ namespace Calculator
                     ;
                 }
             }
-            textBox2.Text = textBox2.Text + LastNumber.ToString() +" = " + StoredNumber.ToString();
+            textBox2.Text = textBox2.Text + LastNumber.ToString() + " = " + StoredNumber.ToString();
             Outcome = 0;
 
 
         }
-       
+
 
         private void Form1_Load(object sender, EventArgs e)
         {
            
         }
 
-       
+
 
         private void btnLoc_Click(object sender, EventArgs e)
         {
@@ -275,17 +307,17 @@ namespace Calculator
 
             try
             {
-                int value = int.Parse(textBox1.Text);
-                if (value > Int32.MinValue && value < Int32.MaxValue)
+                int number = int.Parse(textBox1.Text);
+                if (number > Int32.MinValue && number < Int32.MaxValue)
                 {
-                    textBox1.Text = Convert.ToString(value, 2).ToString();
+                    textBox1.Text = Convert.ToString(number, 2).ToString();
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
                 textBox1.Text = "ERROR";
-               
+
             }
 
         }
@@ -296,25 +328,15 @@ namespace Calculator
             {
                 textBox1.Text = Convert.ToInt32(textBox1.Text, 2).ToString();
             }
-            catch (Exception ex)
+            catch (Exception )
             {
                 textBox1.Text = "ERROR";
-            
-            }
-
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox1_KeyUp(object sender, KeyEventArgs e)
-        {
-            if(e.KeyCode == Keys.Enter)
-            {
 
             }
+
         }
+
+
     }
-}   
+    
+}
