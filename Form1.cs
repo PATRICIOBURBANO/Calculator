@@ -180,7 +180,7 @@ namespace Calculator
             }
             else
             {
-                Outcome = StoredNumber - (Convert.ToDouble(textBox1.Text)*-1);
+                Outcome = StoredNumber + Convert.ToDouble(textBox1.Text);
                 textBox2.Text += textBox1.Text + "-";
                 Operand = "-";
                 StoredNumber = Outcome;
@@ -243,10 +243,11 @@ namespace Calculator
 
         private void nEqual_Click(object sender, EventArgs e)
         {
-
+            
 
             if (Operand == "+")
             {
+                StoredNumber = Outcome + Convert.ToDouble(textBox1.Text);
                 LastNumber = Convert.ToDouble(textBox1.Text);
                 StoredNumber = Outcome + Convert.ToDouble(textBox1.Text);
                 textBox1.Text = Convert.ToString(Math.Round(StoredNumber, 2).ToString("#.00"));
@@ -255,6 +256,7 @@ namespace Calculator
             }
             if (Operand == "-")
             {
+                
                 LastNumber = Convert.ToDouble(textBox1.Text);
                 StoredNumber = Outcome - Convert.ToDouble(textBox1.Text);
                 textBox1.Text = Convert.ToString(Math.Round(StoredNumber, 2).ToString("#.00"));
@@ -262,6 +264,7 @@ namespace Calculator
             }
             if (Operand == "*")
             {
+                
                 LastNumber = Convert.ToDouble(textBox1.Text);
                 StoredNumber = Outcome * Convert.ToDouble(LastNumber);
                 textBox1.Text = Convert.ToString(Math.Round(StoredNumber, 2).ToString("#.00"));
@@ -276,6 +279,7 @@ namespace Calculator
                 }
                 else
                 {
+               
                     LastNumber = Convert.ToDouble(textBox1.Text);
                     StoredNumber = Outcome / Convert.ToDouble(LastNumber);
                     textBox1.Text = Convert.ToString(Math.Round(StoredNumber, 2).ToString("#.00"));
@@ -307,7 +311,7 @@ namespace Calculator
 
             try
             {
-                int number = int.Parse(textBox1.Text);
+                int number = int.Parse(textBox1.Text)/1;
                 if (number > Int32.MinValue && number < Int32.MaxValue)
                 {
                     textBox1.Text = Convert.ToString(number, 2).ToString();
@@ -335,8 +339,6 @@ namespace Calculator
             }
 
         }
-
-
     }
     
 }
